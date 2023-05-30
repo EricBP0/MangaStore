@@ -15,10 +15,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-        //Eric se fudeu pra caralho
-        //kkkk
-        //otario demais
-        // se vira agora
     }
 
     public static void main(String[] args) {
