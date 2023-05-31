@@ -29,7 +29,7 @@ public class MangaDAO implements IMangaDAO{
             long idGerado = resultSet.getLong(1);
             manga.setId(Math.toIntExact(idGerado));
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao inserir prato no banco de dados", e);
+            throw new RuntimeException("Erro ao inserir manga no banco de dados", e);
         }
         return manga;
     }
@@ -46,10 +46,10 @@ public class MangaDAO implements IMangaDAO{
             statement.setInt(5, manga.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated == 0) {
-                throw new SQLException("Erro ao atualizar prato: nenhum registro foi modificado.");
+                throw new SQLException("Erro ao atualizar Manga: nenhum registro foi modificado.");
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao atualizar prato no banco de dados", e);
+            throw new RuntimeException("Erro ao atualizar Manga no banco de dados", e);
         }
         return manga;
     }
@@ -63,7 +63,7 @@ public class MangaDAO implements IMangaDAO{
             statement.setInt(1, login.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Erro a excluir o cadastro", e);
+            throw new RuntimeException("Erro a excluir o Manga", e);
         }
     }
 
@@ -72,7 +72,7 @@ public class MangaDAO implements IMangaDAO{
         List<Manga> listaManga = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection()) {
-            String query = "SELECT * FROM pratos";
+            String query = "SELECT * FROM manga";
 
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
@@ -87,7 +87,7 @@ public class MangaDAO implements IMangaDAO{
                 listaManga.add(manga);
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Erro a buscar a cadastros", e);
+            throw new RuntimeException("Erro a buscar a mangas", e);
         }
         return listaManga;
     }
@@ -97,7 +97,7 @@ public class MangaDAO implements IMangaDAO{
         Optional<Manga> listaManga = Optional.empty();
 
         try (Connection connection = ConnectionFactory.getConnection()) {
-            String query = "SELECT * FROM login WHERE id = ?";
+            String query = "SELECT * FROM manga WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
 
@@ -112,7 +112,7 @@ public class MangaDAO implements IMangaDAO{
                 listaManga = Optional.of(manga);
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar prato no banco de dados", e);
+            throw new RuntimeException("Erro ao buscar manga no banco de dados", e);
         }
 
         return listaManga;
