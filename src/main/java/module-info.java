@@ -6,6 +6,7 @@ module com.example.mangastoreservidor {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires jasypt;
 
     opens com.example.mangastoreservidor to javafx.fxml;
     exports com.example.mangastoreservidor;
