@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="393.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mangastoreservidor.Controler.ControleCadastro">
+   <children>
+      <Label layoutX="68.0" layoutY="27.0" text="Cadastre-se">
+         <font>
+            <Font name="Impact" size="41.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image_Cadastro" fitHeight="401.0" fitWidth="249.0" layoutX="344.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../java/com/example/mangastoreservidor/Drawble/ShibuyaManga.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="label_Loguin" layoutX="55.0" layoutY="144.0" text="Loguin :">
+         <font>
+            <Font name="Impact" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_Senha" layoutX="56.0" layoutY="202.0" text="Senha :">
+         <font>
+            <Font name="Impact" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFild_Loguin" layoutX="132.0" layoutY="143.0" />
+      <TextField fx:id="textFild_Senha" layoutX="132.0" layoutY="201.0" />
+      <Button fx:id="button_Cadastrar" layoutX="155.0" layoutY="287.0" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar" />
+      <Button layoutX="61.0" layoutY="343.0" mnemonicParsing="false" onAction="#voltarTelaLoguin" text="Voltar" />
+   </children>
+</AnchorPane>
