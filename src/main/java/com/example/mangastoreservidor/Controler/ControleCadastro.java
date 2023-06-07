@@ -32,6 +32,13 @@ private TextField textFild_Loguin;
 private TextField textFild_Senha;
 
 @FXML
+private TextField textFild_Profissao;
+
+
+@FXML
+private Label label_Profissao;
+
+@FXML
     void cadastrarUsuario(ActionEvent event) {
 
             }
