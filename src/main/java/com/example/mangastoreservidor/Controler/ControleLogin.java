@@ -52,7 +52,7 @@ public class ControleLogin implements Initializable {
         Image imagemLogin;
 
         try {
-            imagemLogin = new Image(new FileInputStream("src/main/java/com/exemplo/mangastoreservidor/Drawble/mangaComics.jpg"));
+            imagemLogin = new Image(new FileInputStream("src/main/java/com/example/mangastoreservidor/Drawble/mangaComics.jpg"));
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
