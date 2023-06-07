@@ -1,7 +1,7 @@
 package com.example.mangastoreservidor.DAO;
 
 import com.example.mangastoreservidor.Connection.ConnectionFactory;
-import com.example.mangastoreservidor.Model.Manga;
+import com.example.mangastoreservidor.Model.Integer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,38 +12,38 @@ public class MangaDAO implements IMangaDAO{
 
 
     @Override
-    public Manga create(Manga manga) {
+    public Integer create(Integer integer) {
         try (Connection connection = ConnectionFactory.getConnection()) {
             String query = "INSERT INTO manga (anime, edicao, titulo, preco) VALUES (?, ?, ?, ?)";
 
             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            System.out.println(manga.getTitulo()+ "Create");
-            statement.setString(1, manga.getAnime());
-            statement.setString(2, manga.getEdicao());
-            statement.setString(3, manga.getTitulo());
-            statement.setDouble(4, manga.getPreco());
+            System.out.println(integer.getTitulo()+ "Create");
+            statement.setString(1, integer.getAnime());
+            statement.setString(2, integer.getEdicao());
+            statement.setString(3, integer.getTitulo());
+            statement.setDouble(4, integer.getPreco());
             statement.executeUpdate();
 
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
             long idGerado = resultSet.getLong(1);
-            manga.setId(Math.toIntExact(idGerado));
+            integer.setId(Math.toIntExact(idGerado));
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao inserir manga no banco de dados", e);
         }
-        return manga;
+        return integer;
     }
 
     @Override
-    public Manga update(Manga manga) {
+    public Integer update(Integer integer) {
         try (Connection connection = ConnectionFactory.getConnection()) {
             String query = "UPDATE manga SET anime = ?, edicao = ?, titulo = ?, preco = ? WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, manga.getAnime());
-            statement.setString(2, manga.getEdicao());
-            statement.setString(3, manga.getTitulo());
-            statement.setDouble(4, manga.getPreco());
-            statement.setInt(5, manga.getId());
+            statement.setString(1, integer.getAnime());
+            statement.setString(2, integer.getEdicao());
+            statement.setString(3, integer.getTitulo());
+            statement.setDouble(4, integer.getPreco());
+            statement.setInt(5, integer.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated == 0) {
                 throw new SQLException("Erro ao atualizar Manga: nenhum registro foi modificado.");
@@ -51,11 +51,11 @@ public class MangaDAO implements IMangaDAO{
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao atualizar Manga no banco de dados", e);
         }
-        return manga;
+        return integer;
     }
 
     @Override
-    public void delete(Manga login) {
+    public void delete(Integer login) {
         try (Connection connection = ConnectionFactory.getConnection()) {
             String query = "DELETE FROM manga WHERE id = ?";
 
@@ -68,8 +68,8 @@ public class MangaDAO implements IMangaDAO{
     }
 
     @Override
-    public List<Manga> findAll() {
-        List<Manga> listaManga = new ArrayList<>();
+    public List<Integer> findAll() {
+        List<Integer> listaInteger = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection()) {
             String query = "SELECT * FROM manga";
@@ -78,23 +78,23 @@ public class MangaDAO implements IMangaDAO{
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                Manga manga = new Manga(
+                Integer integer = new Integer(
                         resultSet.getInt("id"),
                         resultSet.getString("anime"),
                         resultSet.getString("edicao"),
                         resultSet.getString("titulo"),
                         resultSet.getDouble("preco"));
-                listaManga.add(manga);
+                listaInteger.add(integer);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Erro a buscar a mangas", e);
         }
-        return listaManga;
+        return listaInteger;
     }
 
     @Override
-    public Optional<Manga> findById(int id) {
-        Optional<Manga> listaManga = Optional.empty();
+    public Optional<Integer> findById(int id) {
+        Optional<Integer> listaManga = Optional.empty();
 
         try (Connection connection = ConnectionFactory.getConnection()) {
             String query = "SELECT * FROM manga WHERE id = ?";
@@ -103,13 +103,13 @@ public class MangaDAO implements IMangaDAO{
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                Manga manga = new Manga(
+                Integer integer = new Integer(
                         resultSet.getInt("id"),
                         resultSet.getString("anime"),
                         resultSet.getString("edicao"),
                         resultSet.getString("titulo"),
                         resultSet.getDouble("preco"));
-                listaManga = Optional.of(manga);
+                listaManga = Optional.of(integer);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao buscar manga no banco de dados", e);

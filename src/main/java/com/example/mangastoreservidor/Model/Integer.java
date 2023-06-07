@@ -1,6 +1,6 @@
 package com.example.mangastoreservidor.Model;
 
-public class Manga {
+public class Integer {
 
     private int id;
 
@@ -12,14 +12,14 @@ public class Manga {
 
     private double preco;
 
-    public Manga(String anime, String edicao, String titulo, double preco) {
+    public Integer(String anime, String edicao, String titulo, double preco) {
         this.anime = anime;
         this.edicao = edicao;
         this.titulo = titulo;
         this.preco = preco;
     }
 
-    public Manga(int id, String anime, String edicao, String titulo, double preco) {
+    public Integer(int id, String anime, String edicao, String titulo, double preco) {
         this.id = id;
         this.anime = anime;
         this.edicao = edicao;
@@ -27,7 +27,7 @@ public class Manga {
         this.preco = preco;
     }
 
-    public Manga() {
+    public Integer() {
     }
 
     public int getId() {

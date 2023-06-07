@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="264.0" prefWidth="289.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mangastoreservidor.Controler.ControleControle">
+   <children>
+      <Button fx:id="button_Vendas" layoutX="51.0" layoutY="151.0" mnemonicParsing="false" onAction="#entrar_TelaVendas" text="Vendas" />
+      <Button fx:id="button_Mangas" layoutX="209.0" layoutY="151.0" mnemonicParsing="false" onAction="#entrar_TelaMangas" text="Mangás" />
+      <Label fx:id="label_Vendas" layoutX="86.0" layoutY="50.0" text="Sistema">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
