@@ -10,10 +10,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +40,6 @@ private TextField textFild_Loguin;
 
 @FXML
 private TextField textFild_Senha;
-
 @FXML
 private TextField textFild_Profissao;
 
@@ -71,6 +73,15 @@ private Button button_Voltar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image imagemCadastro;
+
+        try {
+            imagemCadastro = new Image(new FileInputStream("src/main/java/com/example/mangastoreservidor/Drawble/ShibuyaManga.jpg"));
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        image_Cadastro.setImage(imagemCadastro);
         button_Voltar.setOnMouseClicked((event ->{
             System.out.println("Voltar");
             LoginFX loginFX = new LoginFX();
