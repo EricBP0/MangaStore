@@ -4,26 +4,20 @@ import java.util.List;
 
 public class Venda {
     private int numero;
-
     private int itens;
-
-    private String endereco;
-
     private double preco;
 
     public Venda() {
     }
 
-    public Venda(int numero, int itens, String endereco, double preco) {
+    public Venda(int numero, int itens, double preco) {
         this.numero = numero;
         this.itens = itens;
-        this.endereco = endereco;
         this.preco = preco;
     }
 
     public Venda(int itens, String endereco, double preco) {
         this.itens = itens;
-        this.endereco = endereco;
         this.preco = preco;
     }
 
@@ -41,14 +35,6 @@ public class Venda {
 
     public void setItens(int itens) {
         this.itens = itens;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public double getPreco() {

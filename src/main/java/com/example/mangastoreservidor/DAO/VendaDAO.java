@@ -12,19 +12,19 @@ public class VendaDAO implements IVendaDAO{
     @Override
     public Venda create(Venda venda) {
         try (Connection connection = ConnectionFactory.getConnection()) {
-            String query = "INSERT INTO vendas (endereco, preco, itens) VALUES (?, ?, ?)";
+            String query = "INSERT INTO vendas (preco, itensID) VALUES (?, ?, ?)";
 
             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             System.out.println(venda.getNumero()+ "Create");
-            statement.setString(1, venda.getEndereco());
-            statement.setDouble(2, venda.getPreco());
-            statement.setInt(3, venda.getItens());
+            statement.setDouble(1, venda.getPreco());
+            statement.setInt(2, venda.getItens());
             statement.executeUpdate();
 
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
             long idGerado = resultSet.getLong(1);
             venda.setNumero(Math.toIntExact(idGerado));
+
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao inserir venda no banco de dados", e);
         }
@@ -34,12 +34,11 @@ public class VendaDAO implements IVendaDAO{
     @Override
     public Venda update(Venda venda) {
         try (Connection connection = ConnectionFactory.getConnection()) {
-            String query = "UPDATE venda SET itens = ?, preco = ?, endereco = ? WHERE numero = ?";
+            String query = "UPDATE venda SET itensID = ?, preco = ? WHERE numero = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, venda.getItens());
             statement.setDouble(2, venda.getPreco());
-            statement.setString(3, venda.getEndereco());
-            statement.setInt(4, venda.getNumero());
+            statement.setInt(3, venda.getNumero());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated == 0) {
                 throw new SQLException("Erro ao atualizar venda : nenhum registro foi modificado.");
@@ -77,7 +76,6 @@ public class VendaDAO implements IVendaDAO{
                 Venda vendaBuscada = new Venda(
                         resultSet.getInt("numero"),
                         resultSet.getInt("itensID"),
-                        resultSet.getString("endereco"),
                         resultSet.getDouble("preco"));
                 venda.add(vendaBuscada);
             }
@@ -101,7 +99,6 @@ public class VendaDAO implements IVendaDAO{
                 Venda vendaBuscada = new Venda(
                         resultSet.getInt("numero"),
                         resultSet.getInt("itensID"),
-                        resultSet.getString("endereco"),
                         resultSet.getDouble("preco"));
                 listVenda = Optional.of(vendaBuscada);
             }

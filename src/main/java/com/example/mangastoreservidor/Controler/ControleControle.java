@@ -1,8 +1,6 @@
 package com.example.mangastoreservidor.Controler;
 
-import com.example.mangastoreservidor.CadastroFX;
-import com.example.mangastoreservidor.CentralFX;
-import com.example.mangastoreservidor.LoginFX;
+import com.example.mangastoreservidor.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,8 +40,18 @@ public class ControleControle implements Initializable {
     }
 
     @FXML
-    void entrar_TelaVendas(ActionEvent event) {
-
+    void entrar_TelaVendas(ActionEvent ae) {
+        button_Vendas.setOnMouseClicked((event ->{
+            System.out.println("Entrar Tela Vendas");
+            VendasFX vendasFX = new VendasFX();
+            LoginFX.getStage().close();
+            try{
+                vendasFX.start(new Stage());
+            } catch (Exception e){
+                Logger.getLogger(ControleCadastro.class.getName())
+                        .log(Level.SEVERE,null, e);
+            }
+        }));
     }
 
     @Override

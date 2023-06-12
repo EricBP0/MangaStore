@@ -1,18 +1,18 @@
 package com.example.mangastoreservidor.DAO;
 
-import com.example.mangastoreservidor.Model.Integer;
+import com.example.mangastoreservidor.Model.Manga;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IMangaDAO {
-    Integer create(Integer integer);
+    Manga create(Manga manga);
 
-    Integer update(Integer integer);
+    Manga update(Manga manga);
 
-    void delete(Integer login);
+    void delete(Manga login);
 
-    List<Integer> findAll();
+    List<Manga> findAll();
 
-    Optional<Integer> findById(int id);
+    Optional<Manga> findById(int id);
 }
