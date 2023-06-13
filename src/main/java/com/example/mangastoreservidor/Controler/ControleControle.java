@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,14 +23,28 @@ public class ControleControle implements Initializable {
     private Button button_Vendas;
 
     @FXML
+    private Button button_gerarRelatorioVendas;
+
+    @FXML
+    private Button button_gerarRelatorio;
+
+    @FXML
     private Label label_Vendas;
+
+    JasperControler controler;
+    @FXML
+    void gerar_relatorio(ActionEvent event) throws JRException {
+
+        controler = new JasperControler();
+        controler.gerarRelatorioManga();
+    }
 
     @FXML
     void entrar_TelaMangas(ActionEvent ae) {
         button_Mangas.setOnMouseClicked((event ->{
             System.out.println("Entrar Tela Mangas");
             CentralFX centralFX = new CentralFX();
-            LoginFX.getStage().close();
+            ControleFX.getStage().close();
             try{
                 centralFX.start(new Stage());
             } catch (Exception e){
@@ -44,7 +59,7 @@ public class ControleControle implements Initializable {
         button_Vendas.setOnMouseClicked((event ->{
             System.out.println("Entrar Tela Vendas");
             VendasFX vendasFX = new VendasFX();
-            LoginFX.getStage().close();
+            ControleFX.getStage().close();
             try{
                 vendasFX.start(new Stage());
             } catch (Exception e){
@@ -52,6 +67,11 @@ public class ControleControle implements Initializable {
                         .log(Level.SEVERE,null, e);
             }
         }));
+    }
+    @FXML
+    void gerarRelatorioVendas(ActionEvent event) throws JRException {
+        controler = new JasperControler();
+        controler.gerarRelatorioVenda();
     }
 
     @Override

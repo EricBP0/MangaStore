@@ -67,7 +67,7 @@ public class VendaDAO implements IVendaDAO{
         List<Venda> venda = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection()) {
-            String query = "SELECT * FROM pratos";
+            String query = "SELECT * FROM venda";
 
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
@@ -75,7 +75,7 @@ public class VendaDAO implements IVendaDAO{
             while (resultSet.next()) {
                 Venda vendaBuscada = new Venda(
                         resultSet.getInt("numero"),
-                        resultSet.getInt("itensID"),
+                        resultSet.getInt("itens"),
                         resultSet.getDouble("preco"));
                 venda.add(vendaBuscada);
             }

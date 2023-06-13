@@ -121,10 +121,10 @@ public class ControleCentral implements Initializable {
     }
     @FXML
     void voltarTelaCentral(ActionEvent event) {
-        CentralFX centralFX = new CentralFX();
-        ControleFX.getStage().close();
+        ControleFX controleFX = new ControleFX();
+        CentralFX.getStage().close();
         try {
-            centralFX.start(new Stage());
+            controleFX.start(new Stage());
         } catch (Exception e) {
             Logger.getLogger(ControleCadastro.class.getName())
                     .log(Level.SEVERE, null, e);

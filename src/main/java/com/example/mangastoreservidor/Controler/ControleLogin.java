@@ -2,6 +2,7 @@ package com.example.mangastoreservidor.Controler;
 
 import com.example.mangastoreservidor.CadastroFX;
 import com.example.mangastoreservidor.CentralFX;
+import com.example.mangastoreservidor.ControleFX;
 import com.example.mangastoreservidor.DAO.LoginDAO;
 import com.example.mangastoreservidor.LoginFX;
 import javafx.event.ActionEvent;
@@ -82,13 +83,14 @@ public class ControleLogin implements Initializable {
         try {
             if(textFild_Login.getText().isEmpty() || textFild_Senha.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Usuário e senha devem ser preenchidos!");
+            }
                 if (loginDAO.checkLogin(textFild_Login.getText(), textFild_Senha.getText())) {
                     button_Entrar.setOnMouseClicked((event -> {
                         System.out.println("Entrar Central");
-                        CentralFX centralFX = new CentralFX();
+                        ControleFX controleFX = new ControleFX();
                         LoginFX.getStage().close();
                         try {
-                            centralFX.start(new Stage());
+                            controleFX.start(new Stage());
                         } catch (Exception e) {
                             Logger.getLogger(ControleCadastro.class.getName())
                                     .log(Level.SEVERE, null, e);
@@ -97,7 +99,6 @@ public class ControleLogin implements Initializable {
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario ou Senha incorreto!");
                 }
-            }
             }catch (Exception e){
             System.out.println(e.getMessage());
         }
