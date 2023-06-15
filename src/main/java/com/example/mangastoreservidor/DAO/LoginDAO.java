@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.mangastoreservidor.Model.Login;
 import org.jasypt.util.text.BasicTextEncryptor;
 
 public class LoginDAO implements ILoginDAO{
@@ -108,7 +107,7 @@ public class LoginDAO implements ILoginDAO{
         List<Login> login = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection()) {
-            String query = "SELECT * FROM pratos";
+            String query = "SELECT * FROM login";
 
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
@@ -140,7 +139,7 @@ public class LoginDAO implements ILoginDAO{
                 Login login = new Login(
                         resultSet.getInt("id"),
                         resultSet.getString("nome"),
-                        resultSet.getString("preco"));
+                        resultSet.getString("senha"));
                 listLogin = Optional.of(login);
             }
         } catch (SQLException e) {

@@ -76,7 +76,9 @@ public class VendaDAO implements IVendaDAO{
                 Venda vendaBuscada = new Venda(
                         resultSet.getInt("numero"),
                         resultSet.getInt("itens"),
-                        resultSet.getDouble("preco"));
+                        resultSet.getDouble("preco"),
+                        resultSet.getInt("idComprador"),
+                        resultSet.getString("situacao"));
                 venda.add(vendaBuscada);
             }
         } catch (SQLException e) {
@@ -99,7 +101,9 @@ public class VendaDAO implements IVendaDAO{
                 Venda vendaBuscada = new Venda(
                         resultSet.getInt("numero"),
                         resultSet.getInt("itensID"),
-                        resultSet.getDouble("preco"));
+                        resultSet.getDouble("preco"),
+                        resultSet.getInt("idComprador"),
+                        resultSet.getString("situacao"));
                 listVenda = Optional.of(vendaBuscada);
             }
         } catch (SQLException e) {

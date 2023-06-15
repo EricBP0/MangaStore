@@ -74,7 +74,8 @@ public class ControleVendas implements Initializable {
                 System.out.println(venda.getPreco());
                 System.out.println(venda.getItens());
                 StringBuilder sb = new StringBuilder();
-                sb = sb.append("ID - ").append(venda.getNumero()).append(" - R$ ").append(venda.getPreco()).append(" - Itens : ").append(venda.getItens());
+                sb = sb.append("ID - ").append(venda.getNumero()).append(" - R$ ").append(venda.getPreco()).append(" - Itens : ").append(venda.getItens())
+                        .append("- Id Comprador : ").append(venda.getIdComprador()).append("- Situação : ").append(venda.getSituacao());
                 listview_Vendas.getItems().add(sb.toString());
             }
         } catch (Exception e){

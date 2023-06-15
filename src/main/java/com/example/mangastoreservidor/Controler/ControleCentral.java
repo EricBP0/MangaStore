@@ -138,6 +138,9 @@ public class ControleCentral implements Initializable {
             MangaDAO mangaDAO = new MangaDAO();
             List<Manga> listManga = mangaDAO.findAll();
             for (Manga manga : listManga) {
+                if(manga.getQuantidade() == 0){
+                    JOptionPane.showMessageDialog(null, "Sem Mangá no estoque, ID : " + manga.getId());
+                }
                 System.out.println(manga.getId());
                 System.out.println(manga.getAnime());
                 System.out.println(manga.getEdicao());
