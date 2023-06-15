@@ -12,12 +12,6 @@ YmU4Ow==]]>
 	edicao,
 	titulo,
 	quantidade,
-	preco,
-	id,
-	anime,
-	edicao,
-	titulo,
-	quantidade,
 	preco
 FROM mangastore.manga]]>
 	</queryString>
@@ -145,11 +139,7 @@ FROM mangastore.manga]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="50">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="b2650c07-9ca5-4186-80e6-4506cb417241"/>
-			</line>
-		</band>
+		<band height="50"/>
 	</detail>
 	<columnFooter>
 		<band/>
